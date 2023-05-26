@@ -11,7 +11,18 @@ namespace bll_proj.BLL
     [System.ComponentModel.DataObject]
     public class MetalBlanksBLL
     {
-        private MetalBlanksTableAdapter Adapter = new MetalBlanksTableAdapter();
+        private MetalBlanksAdapter Adapter;
+
+        public MetalBlanksBLL()
+        {
+            Adapter = new MetalBlanksAdapter();
+        }
+
+        public MetalBlanksBLL(MetalBlanksAdapter adapter)
+        {
+            Adapter = adapter;
+        }
+
 
         [System.ComponentModel.DataObjectMethod
         (System.ComponentModel.DataObjectMethodType.Select, true)]

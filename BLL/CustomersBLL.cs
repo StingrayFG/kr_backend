@@ -12,7 +12,17 @@ namespace bll_proj.BLL
     [System.ComponentModel.DataObject]
     public class CustomersBLL
     {
-        private CustomersTableAdapter Adapter = new CustomersTableAdapter();
+        private CustomersAdapter Adapter;
+
+        public CustomersBLL()
+        {
+            Adapter = new CustomersAdapter();
+        }
+
+        public CustomersBLL(CustomersAdapter adapter)
+        {
+            Adapter = adapter;
+        }
 
         [System.ComponentModel.DataObjectMethod
         (System.ComponentModel.DataObjectMethodType.Select, true)]
@@ -45,7 +55,7 @@ namespace bll_proj.BLL
 
         public List<Customer>? GetCustomersByPhoneNumber(string phoneNumber)
         {
-            return Adapter.GetCustomersByName(phoneNumber);
+            return Adapter.GetCustomersByPhoneNumber(phoneNumber);
         }
 
         public Customer? GetCustomerByLogin(string phoneNumber, string password)
@@ -60,7 +70,7 @@ namespace bll_proj.BLL
 
         public void UpdateCustomerPhoneNumber(int customerID, string newPhoneNumber)
         {
-            Adapter.UpdateCustomerName(customerID, newPhoneNumber);
+            Adapter.UpdateCustomerPhoneNumber(customerID, newPhoneNumber);
         }
 
         public void RemoveCustomer(int customerID)

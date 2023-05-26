@@ -16,7 +16,17 @@ namespace bll_proj.Controllers
     public class ShoppingCartsController : Controller
     {
 
-        ShoppingCartsBLL BLL = new ShoppingCartsBLL();
+        ShoppingCartsBLL BLL;
+
+        public ShoppingCartsController()
+        {
+            BLL = new ShoppingCartsBLL();
+        }
+
+        public ShoppingCartsController(ShoppingCartsBLL bll)
+        {
+            BLL = bll;
+        }
 
         [HttpPut]
         [Route("add")]

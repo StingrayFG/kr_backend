@@ -16,7 +16,17 @@ namespace bll_proj.Controllers
     public class OrdersController : Controller
     {
 
-        OrdersBLL BLL = new OrdersBLL();
+        OrdersBLL BLL;
+
+        public OrdersController()
+        {
+            BLL = new OrdersBLL();
+        }
+
+        public OrdersController(OrdersBLL bll)
+        {
+            BLL = bll;
+        }
 
         [HttpPut]
         [Route("add")]

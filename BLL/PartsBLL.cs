@@ -10,9 +10,23 @@ namespace bll_proj.BLL
     [System.ComponentModel.DataObject]
     public class PartsBLL
     {
-        private PartsTableAdapter Adapter = new PartsTableAdapter();
-        private MetalBlanksTableAdapter MetalBlankAdapter = new MetalBlanksTableAdapter();
-        private MachinesTableAdapter MachineAdapter = new MachinesTableAdapter();
+        private PartsAdapter Adapter;
+        private MetalBlanksAdapter MetalBlankAdapter;
+        private MachinesAdapter MachineAdapter;
+
+        public PartsBLL()
+        {
+            Adapter = new PartsAdapter();
+            MetalBlankAdapter = new MetalBlanksAdapter();
+            MachineAdapter = new MachinesAdapter();
+        }
+
+        public PartsBLL(PartsAdapter adapter, MetalBlanksAdapter metalBlankAdapter, MachinesAdapter machineAdapter)
+        {
+            Adapter = adapter;
+            MetalBlankAdapter = metalBlankAdapter;
+            MachineAdapter = machineAdapter;
+        }
 
         [System.ComponentModel.DataObjectMethod
         (System.ComponentModel.DataObjectMethodType.Select, true)]

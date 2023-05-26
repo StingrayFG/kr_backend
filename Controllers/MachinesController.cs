@@ -16,7 +16,17 @@ namespace bll_proj.Controllers
     public class MachinesController : Controller
     {
 
-        MachinesBLL BLL = new MachinesBLL();
+        private MachinesBLL BLL;
+
+        public MachinesController()
+        {
+            BLL = new MachinesBLL();
+        }
+
+        public MachinesController(MachinesBLL bll)
+        {
+            BLL = bll;
+        }
 
         [HttpPut]
         [Route("add")]

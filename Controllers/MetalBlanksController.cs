@@ -16,7 +16,17 @@ namespace bll_proj.Controllers
     public class MetalBlanksController : Controller
     {
 
-        MetalBlanksBLL BLL = new MetalBlanksBLL();
+        MetalBlanksBLL BLL;
+
+        public MetalBlanksController()
+        {
+            BLL = new MetalBlanksBLL();
+        }
+
+        public MetalBlanksController(MetalBlanksBLL bll)
+        {
+            BLL = bll;
+        }
 
         [HttpPut]
         [Route("add_by_price_per_kg")]

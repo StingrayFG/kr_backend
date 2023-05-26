@@ -10,8 +10,20 @@ namespace bll_proj.BLL
     [System.ComponentModel.DataObject]
     public class OrdersBLL
     {
-        private OrdersTableAdapter Adapter = new OrdersTableAdapter();
-        private ShoppingCartsTableAdapter ShoppingCartAdapter = new ShoppingCartsTableAdapter();
+        private OrdersAdapter Adapter;
+        private ShoppingCartsAdapter ShoppingCartAdapter;
+
+        public OrdersBLL()
+        {
+            Adapter = new OrdersAdapter();
+            ShoppingCartAdapter = new ShoppingCartsAdapter();
+        }
+
+        public OrdersBLL(OrdersAdapter adapter, ShoppingCartsAdapter shoppingCartAdapter)
+        {
+            Adapter = adapter;
+            ShoppingCartAdapter = shoppingCartAdapter;
+        }
 
         [System.ComponentModel.DataObjectMethod
         (System.ComponentModel.DataObjectMethodType.Select, true)]

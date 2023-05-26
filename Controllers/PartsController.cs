@@ -16,7 +16,17 @@ namespace bll_proj.Controllers
     public class PartsController : Controller
     {
 
-        PartsBLL BLL = new PartsBLL();
+        PartsBLL BLL;
+
+        public PartsController()
+        {
+            BLL = new PartsBLL();
+        }
+
+        public PartsController(PartsBLL bll)
+        {
+            BLL = bll;
+        }
 
         [HttpPut]
         [Route("add")]

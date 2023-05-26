@@ -10,9 +10,23 @@ namespace bll_proj.BLL
     [System.ComponentModel.DataObject]
     public class ShoppingCartsBLL
     {
-        private ShoppingCartsTableAdapter Adapter = new ShoppingCartsTableAdapter();
-        private PartsTableAdapter PartsAdapter = new PartsTableAdapter();
-        private MetalBlanksTableAdapter MetalBlanksAdapter = new MetalBlanksTableAdapter();
+        private ShoppingCartsAdapter Adapter = new ShoppingCartsAdapter();
+        private PartsAdapter PartAdapter = new PartsAdapter();
+        private MetalBlanksAdapter MetalBlankAdapter = new MetalBlanksAdapter();
+
+        public ShoppingCartsBLL()
+        {
+            Adapter = new ShoppingCartsAdapter();
+            PartAdapter = new PartsAdapter();
+            MetalBlankAdapter = new MetalBlanksAdapter();
+        }
+
+        public ShoppingCartsBLL(ShoppingCartsAdapter adapter, PartsAdapter partAdapter, MetalBlanksAdapter metalBlankAdapter)
+        {
+            Adapter = adapter;
+            PartAdapter = partAdapter;
+            MetalBlankAdapter = metalBlankAdapter;
+        }
 
         [System.ComponentModel.DataObjectMethod
         (System.ComponentModel.DataObjectMethodType.Select, true)]
@@ -25,9 +39,9 @@ namespace bll_proj.BLL
                 decimal partPrice = 0;
 
                 if (isProcessed == false)
-                { partPrice = MetalBlanksAdapter.GetMetalBlankByID(partID).Price; }
+                { partPrice = MetalBlankAdapter.GetMetalBlankByID(partID).Price; }
                 else if (isProcessed == true)
-                { partPrice = PartsAdapter.GetPartByID(partID).TotalPrice; }
+                { partPrice = PartAdapter.GetPartByID(partID).TotalPrice; }
     
 
                 Adapter.AddShoppingCart(new ShoppingCart
@@ -62,7 +76,7 @@ namespace bll_proj.BLL
             {
                 if (cart.isPartProcessed == false)
                 {
-                    MetalBlank mb = MetalBlanksAdapter.GetMetalBlankByID(cart.PartID);   
+                    MetalBlank mb = MetalBlankAdapter.GetMetalBlankByID(cart.PartID);   
                     if (mb != null)
                     {
                         mb.Count = cart.Count;
@@ -72,7 +86,7 @@ namespace bll_proj.BLL
                 }
                 else if (cart.isPartProcessed == true)
                 {
-                    Part p = PartsAdapter.GetPartByID(cart.PartID);
+                    Part p = PartAdapter.GetPartByID(cart.PartID);
                     if (p != null)
                     {
                         res.TotalPrice += p.TotalPrice;
@@ -136,7 +150,7 @@ namespace bll_proj.BLL
         {
             int count = Adapter.GetShoppingCart(cartID).Count;
             int partID = Adapter.GetShoppingCart(cartID).PartID;
-            decimal partPrice = PartsAdapter.GetPartByID(partID).TotalPrice;
+            decimal partPrice = PartAdapter.GetPartByID(partID).TotalPrice;
 
             Adapter.UpdateSCPart(cartID, newPartID);
             Adapter.UpdateSCPrice(cartID, partPrice * count);
@@ -145,7 +159,7 @@ namespace bll_proj.BLL
         public void UpdateSCPartCount(int cartID, int newCount)
         {
             int partID = Adapter.GetShoppingCart(cartID).PartID;
-            decimal partPrice = PartsAdapter.GetPartByID(partID).TotalPrice;
+            decimal partPrice = PartAdapter.GetPartByID(partID).TotalPrice;
 
             Adapter.UpdateSCPartCount(cartID, newCount);
             Adapter.UpdateSCPrice(cartID, partPrice * newCount);

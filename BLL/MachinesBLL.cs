@@ -11,7 +11,17 @@ namespace bll_proj.BLL
     [System.ComponentModel.DataObject]
     public class MachinesBLL
     {
-        private MachinesTableAdapter Adapter = new MachinesTableAdapter();
+        private MachinesAdapter Adapter;
+
+        public MachinesBLL()
+        {
+            Adapter = new MachinesAdapter();
+        }
+
+        public MachinesBLL(MachinesAdapter adapter)
+        {
+            Adapter = adapter;
+        }
 
         [System.ComponentModel.DataObjectMethod
         (System.ComponentModel.DataObjectMethodType.Select, true)]
