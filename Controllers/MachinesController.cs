@@ -18,16 +18,6 @@ namespace bll_proj.Controllers
 
         private MachinesBLL BLL = new MachinesBLL();
 
-        public MachinesController()
-        {
-            BLL = new MachinesBLL();
-        }
-
-        public MachinesController(MachinesBLL bll)
-        {
-            BLL = bll;
-        }
-
         [HttpPut]
         [Route("add")]
         public void AddMachine(string model, Vector3 maxDimensions, double processingTimeOf1mm3, decimal priceOfProcessing1mm3)

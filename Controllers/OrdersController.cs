@@ -18,16 +18,6 @@ namespace bll_proj.Controllers
 
         OrdersBLL BLL = new OrdersBLL();
 
-        public OrdersController()
-        {
-            BLL = new OrdersBLL();
-        }
-
-        public OrdersController(OrdersBLL bll)
-        {
-            BLL = bll;
-        }
-
         [HttpPut]
         [Route("add")]
         public void AddOrder(int customerID, string paymentMethod)

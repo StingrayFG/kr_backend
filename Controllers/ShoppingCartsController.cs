@@ -18,16 +18,6 @@ namespace bll_proj.Controllers
 
         ShoppingCartsBLL BLL = new ShoppingCartsBLL();
 
-        public ShoppingCartsController()
-        {
-            BLL = new ShoppingCartsBLL();
-        }
-
-        public ShoppingCartsController(ShoppingCartsBLL bll)
-        {
-            BLL = bll;
-        }
-
         [HttpPut]
         [Route("add")]
         public void AddShoppingCart(int customerID, int partID, int partCount, bool isProcessed)

@@ -16,18 +16,8 @@ namespace bll_proj.Controllers
     [ApiExplorerSettings(GroupName = "customers")]
     public class CustomersController : Controller
     {
-        CustomersBLL BLL = new Customer();
+        CustomersBLL BLL = new CustomersBLL();
 
-        public CustomersController()
-        {
-            BLL = new CustomersBLL();
-        }
-
-        public CustomersController(CustomersBLL bll)
-        {
-            BLL = bll;
-        }
-        
         [HttpPut]
         [Route("add")]
         public void AddCustomer(string name, string phoneNumber, string password)

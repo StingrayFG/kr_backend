@@ -18,16 +18,6 @@ namespace bll_proj.Controllers
 
         PartsBLL BLL = new PartsBLL();
 
-        public PartsController()
-        {
-            BLL = new PartsBLL();
-        }
-
-        public PartsController(PartsBLL bll)
-        {
-            BLL = bll;
-        }
-
         [HttpPut]
         [Route("add")]
         public void AddPart(string name, double partVolume, int metalBlankID, int machineID)
