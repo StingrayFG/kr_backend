@@ -16,7 +16,7 @@ namespace bll_proj.Controllers
     public class ShoppingCartsController : Controller
     {
 
-        ShoppingCartsBLL BLL;
+        ShoppingCartsBLL BLL = new ShoppingCartsBLL();
 
         public ShoppingCartsController()
         {

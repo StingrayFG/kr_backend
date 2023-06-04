@@ -16,7 +16,7 @@ namespace bll_proj.Controllers
     public class OrdersController : Controller
     {
 
-        OrdersBLL BLL;
+        OrdersBLL BLL = new OrdersBLL();
 
         public OrdersController()
         {

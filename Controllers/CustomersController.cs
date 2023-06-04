@@ -16,7 +16,7 @@ namespace bll_proj.Controllers
     [ApiExplorerSettings(GroupName = "customers")]
     public class CustomersController : Controller
     {
-        CustomersBLL BLL;
+        CustomersBLL BLL = new Customer();
 
         public CustomersController()
         {

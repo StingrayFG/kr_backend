@@ -16,7 +16,7 @@ namespace bll_proj.Controllers
     public class MachinesController : Controller
     {
 
-        private MachinesBLL BLL;
+        private MachinesBLL BLL = new MachinesBLL();
 
         public MachinesController()
         {

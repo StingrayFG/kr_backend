@@ -16,7 +16,7 @@ namespace bll_proj.Controllers
     public class PartsController : Controller
     {
 
-        PartsBLL BLL;
+        PartsBLL BLL = new PartsBLL();
 
         public PartsController()
         {
